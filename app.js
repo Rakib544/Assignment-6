@@ -35,6 +35,7 @@ const getImages = (query) => {
         .catch(err => console.log(err))
 }
 
+
 let slideIndex = 0;
 const selectItem = (event, img) => {
     let element = event.target;
@@ -44,7 +45,7 @@ const selectItem = (event, img) => {
     if (item === -1) {
         sliders.push(img);
     } else {
-        sliders.pop(img)
+        sliders.splice(item, 1)
     }
 }
 var timer
