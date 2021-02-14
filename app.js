@@ -68,24 +68,24 @@ const createSlider = () => {
     document.querySelector('.main').style.display = 'block';
     // hide image aria
     imagesArea.style.display = 'none';
-    const duration = document.getElementById('duration').value || 1000;
+    let duration = document.getElementById('duration').value || 1000;
     if (duration < 0) {
-        alert("Time can't be negative")
-    } else {
-        sliders.forEach(slide => {
-            let item = document.createElement('div')
-            item.className = "slider-item";
-            item.innerHTML = `<img class="w-100"
-        src="${slide}"
-        alt="">`;
-            sliderContainer.appendChild(item)
-        })
-        changeSlide(0)
-        timer = setInterval(function () {
-            slideIndex++;
-            changeSlide(slideIndex);
-        }, duration);
+        duration = Math.abs(duration);
     }
+    console.log(duration);
+    sliders.forEach(slide => {
+        let item = document.createElement('div')
+        item.className = "slider-item";
+        item.innerHTML = `<img class="w-100"
+    src="${slide}"
+    alt="">`;
+        sliderContainer.appendChild(item)
+    })
+    changeSlide(0)
+    timer = setInterval(function () {
+        slideIndex++;
+        changeSlide(slideIndex);
+    }, duration);
 
 }
 
@@ -117,7 +117,7 @@ const changeSlide = (index) => {
 
 //working on enter key button
 document.getElementById('search').addEventListener("keypress", (event) => {
-    if(event.key === 'Enter') {
+    if (event.key === 'Enter') {
         searchBtn.click();
     }
 })
