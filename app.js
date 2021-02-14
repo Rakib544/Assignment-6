@@ -36,9 +36,12 @@ const getImages = (query) => {
         .then(data => {
             if(data.hits.length > 0) {
                 showImages(data.hits)
+                document.getElementById('not-found').innerHTML = "";
             } else {
                 document.getElementById('not-found').innerHTML = "Result not found";
                 toggleSpinner(false);
+                gallery.innerHTML = '';
+                document.getElementById('slider-main').classList.add('d-none');
             }
         })
         .catch(err => console.log(err))
