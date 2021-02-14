@@ -33,7 +33,14 @@ const getImages = (query) => {
     toggleSpinner(true);
     fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
         .then(response => response.json())
-        .then(data => showImages(data.hits))
+        .then(data => {
+            if(data.hits.length > 0) {
+                showImages(data.hits)
+            } else {
+                document.getElementById('not-found').innerHTML = "Result not found";
+                toggleSpinner(false);
+            }
+        })
         .catch(err => console.log(err))
 }
 
