@@ -88,13 +88,11 @@ const createSlider = () => {
 
     sliders.map((item, index) => {
         let dot = document.createElement('div');
-        dot.classList.add('dot');
+        dot.className = 'dot dotActive';
         dot.setAttribute('onclick', `currentSlide(${index})`)
         document.getElementById('dots').appendChild(dot);
     })
-
 }
-
 
 
 // change slider index 
