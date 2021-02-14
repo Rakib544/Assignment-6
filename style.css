@@ -51,8 +51,8 @@
     margin: 0 3px;
   }
 
-  .dot:hover, .dotActive {
-    background-color: black;
+  .dot:hover {
+    background-color: rgb(111, 110, 110);
   }
   
   .main {
