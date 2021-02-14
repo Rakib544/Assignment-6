@@ -72,7 +72,6 @@ const createSlider = () => {
     if (duration < 0) {
         duration = Math.abs(duration);
     }
-    console.log(duration);
     sliders.forEach(slide => {
         let item = document.createElement('div')
         item.className = "slider-item";
@@ -87,11 +86,26 @@ const createSlider = () => {
         changeSlide(slideIndex);
     }, duration);
 
+    sliders.map((item, index) => {
+        let dot = document.createElement('div');
+        dot.classList.add('dot');
+        dot.setAttribute('onclick', `currentSlide(${index})`)
+        document.getElementById('dots').appendChild(dot);
+    })
+
 }
+
+
 
 // change slider index 
 const changeItem = index => {
     changeSlide(slideIndex += index);
+}
+
+
+//handle current slide 
+const currentSlide = index => {
+    changeSlide(slideIndex = index)
 }
 
 // change slide item
